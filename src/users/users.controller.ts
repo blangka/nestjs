@@ -19,7 +19,6 @@ export class UsersController {
 
   @Get()
   @ApiOperation({ summary: 'Get all users', description: 'Get all users' })
-  @HttpCode(HttpStatus.OK)
   async findAll() {
     const users = await this.usersService.findAll();
 
@@ -31,7 +30,6 @@ export class UsersController {
 
   @Post()
   @ApiOperation({ summary: 'Create a user', description: 'Create a user' })
-  @HttpCode(HttpStatus.OK)
   async create(@Body() userDto: UserDto) {
     const user = await this.usersService.create(userDto);
     const data = UserDto.fromEntity(user);
@@ -39,7 +37,6 @@ export class UsersController {
   }
 
   @Get('/error')
-  @HttpCode(HttpStatus.OK)
   error() {
     this.usersService.error();
     return { message: 'success', res: null };
