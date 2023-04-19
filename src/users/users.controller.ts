@@ -65,4 +65,10 @@ export class UsersController {
     const data = user ? UserDto.fromEntity(user) : {};
     return { message: 'success', res: data };
   }
+
+  @Get('/joinTest')
+  async joinTest() {
+    const data = await this.usersService.joinTest();
+    return { message: 'success', res: data };
+  }
 }

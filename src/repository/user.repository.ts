@@ -9,17 +9,20 @@ export interface UserRepository extends Repository<User> {
   findByEmail(email: string): Promise<User>;
 
   findByError(): Promise<User>;
+
+  joinTest(): Promise<any>;
 }
 
 type CustomUserRepository = Pick<
   UserRepository,
-  'findByName' | 'findByEmail' | 'findByError'
+  'findByName' | 'findByEmail' | 'findByError' | 'joinTest'
 >;
 
 export const customUserRepositoryMethods: CustomUserRepository = {
   findByName(name: string): Promise<User> {
     const user = this.findOne({
       where: { name: name },
+      join: {},
     });
     return user;
   },
@@ -33,6 +36,14 @@ export const customUserRepositoryMethods: CustomUserRepository = {
     const user = this.findOne({
       where: { test: 'test' },
     });
+    return user;
+  },
+  joinTest(): Promise<any> {
+    const user = this.createQueryBuilder('u')
+      .select(['u.id', 'g.id', 'g.name'])
+      .leftJoinAndSelect('u.group', 'g')
+      .where('u.id = :id', { id: 1 })
+      .getOne();
     return user;
   },
 };

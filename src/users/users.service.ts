@@ -36,4 +36,8 @@ export class UsersService {
   error() {
     throw new HttpException(DUPLICATE_USER_ERROR, 500);
   }
+
+  async joinTest(): Promise<any> {
+    return this.userRepository.joinTest();
+  }
 }
