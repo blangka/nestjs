@@ -23,12 +23,6 @@ export class HttpExceptionFilter implements ExceptionFilter {
   catch(exception: HttpException, host: ArgumentsHost) {
     const ctx = host.switchToHttp();
     const response = ctx.getResponse();
-    const request = ctx.getRequest();
-
-    const status =
-      exception instanceof HttpException
-        ? exception.getStatus()
-        : HttpStatus.INTERNAL_SERVER_ERROR;
 
     /**
      * @author Ryan
@@ -37,10 +31,9 @@ export class HttpExceptionFilter implements ExceptionFilter {
     const res: any = exception.getResponse();
 
     /* 클라이언트에게 정보를 전달한다. */
-    response.status(status).json({
-      code: res.code,
+    response.status(200).json({
+      statusCode: res.statusCode,
       message: res.message,
-      data: {},
     });
   }
 }
