@@ -28,6 +28,10 @@ https://codegear.tistory.com/66
 docker-compose up -d
 ```
 
+### typeOrmCustomRepository
+
+https://hou27.tistory.com/entry/Custom-repository%EC%82%AC%EC%9A%A9%EC%9E%90-%EC%A0%95%EC%9D%98-%EB%A0%88%ED%8F%AC%EC%A7%80%ED%86%A0%EB%A6%AC-typeORM
+
 <p align="center">
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
 </p>
